@@ -881,6 +881,98 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4994211579964420539, guid: 73b50eec5da9dee43b8302cc47ad0380, type: 3}
   m_PrefabInstance: {fileID: 301305214}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &495227275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1139177317}
+    m_Modifications:
+    - target: {fileID: 499198977352283139, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 499198977352283139, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 495227278}
+  m_SourcePrefab: {fileID: 100100000, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+--- !u!4 &495227276 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+  m_PrefabInstance: {fileID: 495227275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &495227277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499198977352283139, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+  m_PrefabInstance: {fileID: 495227275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &495227278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495227277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6659912a32b462046983e25c41051360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carPrefab: {fileID: 4594072963674340983, guid: 0bebba7ccd821b242b5830cf4e2e92ae, type: 3}
+  spawnPoints:
+  - {fileID: 495227276}
+  minSpawnInterval: 1
+  maxSpawnInterval: 3
+  maxCars: 3
+  minSpeed: 5
+  maxSpeed: 10
+  despawnDistance: 15
+  maxSpawnTime: 8
 --- !u!4 &496333408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4994211579964420539, guid: 73b50eec5da9dee43b8302cc47ad0380, type: 3}
@@ -1551,6 +1643,8 @@ Transform:
   m_Children:
   - {fileID: 1113922701}
   - {fileID: 562063381}
+  - {fileID: 1888983170}
+  - {fileID: 495227276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1276988958
@@ -2273,6 +2367,98 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8761520006950778460, guid: da118f2c5b7fc9b40a75f367012c43cd, type: 3}
   m_PrefabInstance: {fileID: 1237658550219019918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1888983169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1139177317}
+    m_Modifications:
+    - target: {fileID: 499198977352283139, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 499198977352283139, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1888983172}
+  m_SourcePrefab: {fileID: 100100000, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+--- !u!4 &1888983170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6598894273490169167, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+  m_PrefabInstance: {fileID: 1888983169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1888983171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499198977352283139, guid: 77aa8ba1aeefb4a418c6475953e52f38, type: 3}
+  m_PrefabInstance: {fileID: 1888983169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1888983172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888983171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6659912a32b462046983e25c41051360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carPrefab: {fileID: 4594072963674340983, guid: 0bebba7ccd821b242b5830cf4e2e92ae, type: 3}
+  spawnPoints:
+  - {fileID: 1888983170}
+  minSpawnInterval: 1
+  maxSpawnInterval: 3
+  maxCars: 3
+  minSpeed: 5
+  maxSpeed: 10
+  despawnDistance: 15
+  maxSpawnTime: 8
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1

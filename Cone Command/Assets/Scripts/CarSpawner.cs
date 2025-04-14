@@ -73,9 +73,19 @@ public class CarSpawner : MonoBehaviour
             GameObject car = pair.Key;
             float spawnTime = pair.Value;
 
-            if(car.transform.position.x < despawnDistance || Time.time > spawnTime + maxSpawnTime)
+            if (despawnDistance < 0)
             {
-                carsToDespawn.Add(car);
+                if (car.transform.position.x < despawnDistance || Time.time > spawnTime + maxSpawnTime)
+                {
+                    carsToDespawn.Add(car);
+                }
+            }
+            else
+            {
+                if (car.transform.position.x > despawnDistance || Time.time > spawnTime + maxSpawnTime)
+                {
+                    carsToDespawn.Add(car);
+                }
             }
         }
 
