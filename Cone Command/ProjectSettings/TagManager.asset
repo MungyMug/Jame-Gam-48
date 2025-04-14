@@ -8,6 +8,7 @@ TagManager:
   - Car
   - Speeding Car
   - Hit
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,87 @@
+using NUnit.Framework;
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class CarSpawner : MonoBehaviour
+{
+    [SerializeField] private GameObject carPrefab;
+    [SerializeField] private List<Transform> spawnPoints;
+    [SerializeField] private float minSpawnInterval = 1.0f;
+    [SerializeField] private float maxSpawnInterval = 3.0f;
+    [SerializeField] private int maxCars = 3;
+
+    [SerializeField] private float minSpeed = 5.0f;
+    [SerializeField] private float maxSpeed = 10.0f;
+
+    [SerializeField] private float despawnDistance = -15.0f;
+    [SerializeField] private float maxSpawnTime = 8.0f;
+
+    private Dictionary<GameObject, float> spawnedCars = new Dictionary<GameObject, float>();
+    void Start()
+    {
+        if(spawnPoints == null ||  spawnPoints.Count == 0)
+        {
+            Debug.LogError("Missing Spawnpoints!");
+            enabled = false;
+            return;
+        }
+
+        StartCoroutine(spawnCars());
+    }
+
+    // Update is called once per frame
+    IEnumerator spawnCars()
+    {
+        while (true)
+        {
+            if (spawnedCars.Count < maxCars)
+            {
+                int randomIndex = Random.Range(0, spawnPoints.Count);
+                Transform spawnpoint = spawnPoints[randomIndex];
+
+                GameObject newCar = Instantiate(carPrefab, spawnpoint.position, spawnpoint.rotation);
+                spawnedCars.Add(newCar, Time.time);
+
+                CarMovement carMovement = newCar.GetComponent<CarMovement>();
+
+                if (carMovement != null)
+                {
+                    carMovement.SetMoveSpeed(Random.Range(minSpeed, maxSpeed));
+                }
+                else
+                {
+                    Debug.LogWarning("Car Prefab is missing movement.");
+                }
+            }
+
+            yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
+        }
+    }
+
+    public void DestroyCar(GameObject car)
+    {
+        spawnedCars.Remove(car);
+        Destroy(car);
+    }
+
+    void Update()
+    {
+        List <GameObject> carsToDespawn =  new List <GameObject>();
+        foreach (KeyValuePair<GameObject, float> pair in spawnedCars)
+        {
+            GameObject car = pair.Key;
+            float spawnTime = pair.Value;
+
+            if(car.transform.position.x < despawnDistance || Time.time > spawnTime + maxSpawnTime)
+            {
+                carsToDespawn.Add(car);
+            }
+        }
+
+        foreach (GameObject car in carsToDespawn)
+        {
+            DestroyCar(car);
+        }
+    }
+}

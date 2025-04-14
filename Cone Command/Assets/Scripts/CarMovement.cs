@@ -14,4 +14,9 @@ public class CarMovement : MonoBehaviour
     {
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
+
+    public void SetMoveSpeed(float updatedSpeed)
+    {
+        moveSpeed = updatedSpeed;
+    }
 }

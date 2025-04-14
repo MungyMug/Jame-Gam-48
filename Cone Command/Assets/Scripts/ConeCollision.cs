@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class ConeCollision : MonoBehaviour
     [SerializeField] private int points = 1;
 
     private ScoreManager scoreManager;
+    //private CarSpawner spawner;
 
     private void Start()
     {
@@ -18,6 +20,8 @@ public class ConeCollision : MonoBehaviour
         {
             Debug.LogError("ScoreManager not found!");
         }
+
+        //CarSpawner = FindObjectOfType<CarSpawner>();
     }
     private void OnCollisionEnter(Collision cone)
     {
@@ -34,7 +38,7 @@ public class ConeCollision : MonoBehaviour
             gameObject.tag = "Hit";
 
             Rigidbody carRb = GetComponent<Rigidbody>();
-            //BoxCollider carBC = GetComponent<BoxCollider>();
+            BoxCollider carBC = GetComponent<BoxCollider>();
 
             if (carRb != null)
             {
@@ -43,10 +47,10 @@ public class ConeCollision : MonoBehaviour
 
                 carRb.AddForce(explosionDirection * explosionForce, ForceMode.Impulse);
 
-                //if (carBC != null)
-                //{
-                //    carBC.enabled = false;
-                //}
+                if (carBC != null)
+                {
+                    carBC.enabled = false;
+                }
 
                 if (CarMovementScript != null)
                 {
