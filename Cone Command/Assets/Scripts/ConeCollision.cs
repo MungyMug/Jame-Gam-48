@@ -27,7 +27,7 @@ public class ConeCollision : MonoBehaviour
     {
         if (cone.gameObject.tag == "Cone")
         {
-            GetComponent<MeshRenderer>().material.color = Color.red;
+            //GetComponent<MeshRenderer>().material.color = Color.red;
             Debug.Log("Collision Detected!");
 
             if(scoreManager != null && gameObject.tag != "Hit")

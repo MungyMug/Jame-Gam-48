@@ -862,11 +862,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Cone Command
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 00a1f8c319cddc01
   metroApplicationDescription: Cone Command
   wsaImages: {}
   metroTileShortName: 
