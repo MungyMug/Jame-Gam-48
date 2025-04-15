@@ -14,7 +14,9 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] private float minSpeed = 5.0f;
     [SerializeField] private float maxSpeed = 10.0f;
 
-    [SerializeField] private float despawnDistance = -15.0f;
+    [SerializeField] private float despawnDistancex = -15.0f;
+    [SerializeField] private float maxHeighty = 1.5f;
+    [SerializeField] private float despawnHeighty = 1.5f;
     [SerializeField] private float maxSpawnTime = 8.0f;
 
     private Dictionary<GameObject, float> spawnedCars = new Dictionary<GameObject, float>();
@@ -72,21 +74,39 @@ public class CarSpawner : MonoBehaviour
         {
             GameObject car = pair.Key;
             float spawnTime = pair.Value;
+            CarMovement carMovement = car.GetComponent<CarMovement>();
 
-            if (despawnDistance < 0)
+            if (despawnDistancex < 0)
             {
-                if (car.transform.position.x < despawnDistance || Time.time > spawnTime + maxSpawnTime)
+                if (car.transform.position.x < despawnDistancex || Time.time > spawnTime + maxSpawnTime)
                 {
                     carsToDespawn.Add(car);
                 }
             }
             else
             {
-                if (car.transform.position.x > despawnDistance || Time.time > spawnTime + maxSpawnTime)
+                if (car.transform.position.x > despawnDistancex || Time.time > spawnTime + maxSpawnTime)
                 {
                     carsToDespawn.Add(car);
                 }
             }
+
+            if (gameObject.tag == "WhaleSpawner")
+            {
+                if (car.transform.position.y > maxHeighty)
+                {
+                    carMovement.SetMoveDirection(Vector3.down); // Reverse direction
+                    //carsToDespawn.Add(car);
+                }
+
+                if (car.transform.position.y < despawnHeighty || Time.time > spawnTime + maxSpawnTime)
+                {
+                    carsToDespawn.Add(car);
+                }
+
+                //Debug.Log("Whale height is currently:" + car.transform.position.y);
+            }
+
         }
 
         foreach (GameObject car in carsToDespawn)

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5.0f; // Use a single variable for speed for simplicity
-    [SerializeField] Vector3 moveDirection = Vector3.left; // Set the direction of movement
+    [SerializeField] float moveSpeed = 5.0f;
+    [SerializeField] Vector3 moveDirection = Vector3.left;
 
     void Start()
     {
@@ -18,5 +18,10 @@ public class CarMovement : MonoBehaviour
     public void SetMoveSpeed(float updatedSpeed)
     {
         moveSpeed = updatedSpeed;
+    }
+
+    public void SetMoveDirection(Vector3 newDirection)
+    {
+        moveDirection = newDirection;
     }
 }

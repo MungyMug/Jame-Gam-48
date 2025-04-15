@@ -9,6 +9,8 @@ TagManager:
   - Speeding Car
   - Hit
   - SpawnPoint
+  - PlayerHand
+  - WhaleSpawner
   layers:
   - Default
   - TransparentFX
