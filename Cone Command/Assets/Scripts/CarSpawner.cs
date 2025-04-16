@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class CarSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject carPrefab;
+    [SerializeField] private List<GameObject> carPrefab;
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private float minSpawnInterval = 1.0f;
     [SerializeField] private float maxSpawnInterval = 3.0f;
@@ -42,7 +42,10 @@ public class CarSpawner : MonoBehaviour
                 int randomIndex = Random.Range(0, spawnPoints.Count);
                 Transform spawnpoint = spawnPoints[randomIndex];
 
-                GameObject newCar = Instantiate(carPrefab, spawnpoint.position, spawnpoint.rotation);
+                int randomPrefabIndex = Random.Range(0, carPrefab.Count);
+                GameObject selectedCarPrefab = carPrefab[randomPrefabIndex];
+
+                GameObject newCar = Instantiate(selectedCarPrefab, spawnpoint.position, spawnpoint.rotation);
                 spawnedCars.Add(newCar, Time.time);
 
                 CarMovement carMovement = newCar.GetComponent<CarMovement>();
@@ -63,8 +66,11 @@ public class CarSpawner : MonoBehaviour
 
     public void DestroyCar(GameObject car)
     {
-        spawnedCars.Remove(car);
-        Destroy(car);
+        if (spawnedCars.ContainsKey(car))
+        {
+            spawnedCars.Remove(car);
+            Destroy(car);
+        }
     }
 
     void Update()

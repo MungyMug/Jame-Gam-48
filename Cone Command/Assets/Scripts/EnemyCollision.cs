@@ -11,6 +11,7 @@ public class EnemyCollision : MonoBehaviour
         {
             GetComponent<MeshRenderer>().material.color = Color.red;
             enemyHealthBar.enemyCurrentHealth -= 1f;
+            Destroy(cone.gameObject);
         }
     }
 }
