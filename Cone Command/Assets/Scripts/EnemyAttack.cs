@@ -1,87 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform attackOrigin;
-    [SerializeField] private float launchSpeed = 10f;
-    [SerializeField] private float minAttackInterval = 1f;
-    [SerializeField] private float maxAttackInterval = 3f;
-    [SerializeField] private float projectileLifespan = 5f;
-    [SerializeField] private float aimOffsetY = 0f;
-
     [SerializeField] private HandRotation handRotation;
+    [SerializeField] private Transform playerPos;
 
-    private Transform playerTransform;
-    private float timeSinceLastAttack = 0f;
-    private float currentAttackInterval;
+    [SerializeField] private List<Transform> spawnPoints;
+    [SerializeField] private GameObject weaponPrefab;
+
+    [SerializeField] private float minSpawnInterval = 1.0f;
+    [SerializeField] private float maxSpawnInterval = 3.0f;
+    [SerializeField] private float projectileSpeed = 10f;
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (spawnPoints == null || spawnPoints.Count == 0)
         {
-            playerTransform = player.transform;
-        }
-        else
-        {
-            Debug.LogError("Player not found with tag 'Player'.");
+            Debug.LogError("Missing Spawnpoints!");
             enabled = false;
+            return;
         }
 
-        if (attackOrigin == null)
-        {
-            attackOrigin = transform;
-            Debug.LogWarning("Attack Origin not set. Using enemy's transform.");
-        }
-
-        SetRandomAttackInterval();
+        StartCoroutine(SpawnRoutine());
     }
 
-    void Update()
+    IEnumerator SpawnRoutine()
     {
-        if (playerTransform == null) return;
-
-        timeSinceLastAttack += Time.deltaTime;
-
-        if (timeSinceLastAttack >= currentAttackInterval)
+        while (true)
         {
+            float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
+            yield return new WaitForSeconds(interval);
+
             Attack();
-            timeSinceLastAttack = 0f;
-            SetRandomAttackInterval();
         }
     }
 
     void Attack()
     {
         EnemyHandRotor();
-        if (projectilePrefab != null && attackOrigin != null)
+
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+        GameObject weapon = Instantiate(weaponPrefab, spawnPoint.position, Quaternion.identity);
+
+        // Tell the weapon where the player is
+        WeaponProjectiles wp = weapon.GetComponent<WeaponProjectiles>();
+        if (wp != null && playerPos != null)
         {
-            GameObject projectile = Instantiate(projectilePrefab, attackOrigin.position, attackOrigin.rotation);
-            Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-
-            if (projectileRb != null)
-            {
-                Vector3 targetPosition = playerTransform.position + Vector3.up * aimOffsetY;
-                Vector3 launchDirection = (targetPosition - attackOrigin.position).normalized;
-                projectileRb.AddForce(launchDirection * launchSpeed, ForceMode.Impulse);
-            }
-            else
-            {
-                Debug.LogWarning("Projectile prefab does not have a Rigidbody.");
-            }
-
-            Destroy(projectile, projectileLifespan);
+            wp.Initialize(playerPos.position, projectileSpeed);
         }
         else
         {
-            Debug.LogError("Projectile Prefab or Attack Origin is not set.");
+            Debug.LogError("WeaponProjectile script or playerPos missing.");
         }
-    }
-
-    void SetRandomAttackInterval()
-    {
-        currentAttackInterval = Random.Range(minAttackInterval, maxAttackInterval);
     }
 
     void EnemyHandRotor()
