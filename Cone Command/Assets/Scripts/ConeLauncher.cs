@@ -32,4 +32,12 @@ public class ConeLaucher : MonoBehaviour
             Destroy(spawncone, despawnTimer);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyWeapon"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

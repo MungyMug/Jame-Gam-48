@@ -11,6 +11,7 @@ TagManager:
   - SpawnPoint
   - PlayerHand
   - WhaleSpawner
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX
