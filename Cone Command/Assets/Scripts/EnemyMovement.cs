@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float minSpeed = 1f;
-    [SerializeField] private float maxSpeed = 3f;
+    [SerializeField] public float minSpeed = 1f;
+    [SerializeField] public float maxSpeed = 3f;
     [SerializeField] private float changeDirectionInterval = 2f;
     [SerializeField] private float directionChangeProbability = 0.3f;
 

@@ -12,6 +12,11 @@ TagManager:
   - PlayerHand
   - WhaleSpawner
   - EnemyWeapon
+  - WaterPlayArea
+  - Shield
+  - Whale
+  - Help
+  - Phase2
   layers:
   - Default
   - TransparentFX

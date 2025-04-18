@@ -6,6 +6,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float spawnTimer = 0.5f;
     [SerializeField] private HandRotation handRotation;
     [SerializeField] private HandRotation bodyRotation;
+    [SerializeField] private GameObject shield;
 
     private float lastspawntime = 0.0f;
     void Start()
@@ -17,9 +18,11 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= lastspawntime + spawnTimer)
         {
-            LaunchCone();
-            HandRotor();
-            BodyRotor();
+            if (!shield.activeSelf) {
+                LaunchCone();
+                HandRotor();
+                BodyRotor();
+            }
             lastspawntime = Time.time;
         }
     }

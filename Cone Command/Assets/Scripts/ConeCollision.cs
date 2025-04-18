@@ -22,8 +22,6 @@ public class ConeCollision : MonoBehaviour
             //GetComponent<MeshRenderer>().material.color = Color.red;
             Debug.Log("Collision Detected!");
 
-            gameObject.tag = "Hit";
-
             Rigidbody carRb = GetComponent<Rigidbody>();
             BoxCollider carBC = GetComponent<BoxCollider>();
 

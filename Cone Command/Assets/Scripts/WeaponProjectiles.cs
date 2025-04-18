@@ -19,9 +19,6 @@ public class WeaponProjectiles : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        // Debug the movement direction
-        Debug.DrawLine(transform.position, targetPosition, Color.red);
-
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             Destroy(gameObject);
@@ -30,15 +27,7 @@ public class WeaponProjectiles : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Cone"))
+        if (other.CompareTag("Player") || other.CompareTag("Shield"))
         {
             Destroy(gameObject);
         }

@@ -2191,7 +2191,7 @@ GameObject:
   - component: {fileID: 4277388738522973279}
   m_Layer: 0
   m_Name: Trucky(Left-Right)
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

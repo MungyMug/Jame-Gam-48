@@ -10,9 +10,9 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private GameObject weaponPrefab;
 
-    [SerializeField] private float minSpawnInterval = 1.0f;
-    [SerializeField] private float maxSpawnInterval = 3.0f;
-    [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] public float minSpawnInterval = 1.0f;
+    [SerializeField] public float maxSpawnInterval = 3.0f;
+    [SerializeField] public float projectileSpeed = 10f;
 
     void Start()
     {
