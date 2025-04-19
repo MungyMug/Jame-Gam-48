@@ -17,6 +17,7 @@ TagManager:
   - Whale
   - Help
   - Phase2
+  - AudioManager
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,17 @@ public class ConeLaucher : MonoBehaviour
     [SerializeField] private float lauchSpeed = 1.0f;
     [SerializeField] private float despawnTimer = 5.0f;
     [SerializeField] private float rotationSpeed = 180.0f;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found in the scene.");
+        }
+    }
     public void LaunchCone()
     {
         if (conePrefab != null && startPoint != null)
@@ -17,6 +28,7 @@ public class ConeLaucher : MonoBehaviour
             coneRotation.eulerAngles = new Vector3(coneRotation.eulerAngles.x, coneRotation.eulerAngles.y, 180f);
             GameObject spawncone = Instantiate(conePrefab, startPoint.position, startPoint.rotation);
 
+            audioManager.PlaySFX(audioManager.playerattack);
             Rigidbody coneRigidBody = spawncone.GetComponent<Rigidbody>();
 
             if (coneRigidBody != null)

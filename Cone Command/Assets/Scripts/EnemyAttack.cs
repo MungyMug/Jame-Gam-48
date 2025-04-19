@@ -14,6 +14,16 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] public float maxSpawnInterval = 3.0f;
     [SerializeField] public float projectileSpeed = 10f;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found in the scene.");
+        }
+    }
     void Start()
     {
         if (spawnPoints == null || spawnPoints.Count == 0)
@@ -61,6 +71,7 @@ public class EnemyAttack : MonoBehaviour
         if (handRotation != null)
         {
             handRotation.PerformRotation();
+            audioManager.PlaySFX(audioManager.enemyattack);
         }
         else
         {

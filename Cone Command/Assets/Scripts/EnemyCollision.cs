@@ -6,11 +6,22 @@ public class EnemyCollision : MonoBehaviour
     [SerializeField] private EnemyHealthBar enemyHealthBar;
     [SerializeField] private float healthminus = 2.0f;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found in the scene.");
+        }
+    }
     private void OnCollisionEnter(Collision cone)
     {
         if (cone.gameObject.tag == "Cone")
         {
-            GetComponent<MeshRenderer>().material.color = Color.red;
+            audioManager.PlaySFX(audioManager.enemyhit);
+            //GetComponent<MeshRenderer>().material.color = Color.red;
             enemyHealthBar.enemyCurrentHealth -= healthminus;
             Destroy(cone.gameObject);
 
