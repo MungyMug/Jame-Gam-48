@@ -2,7 +2,7 @@
 - Project name: Cone Command
 - Unity version: Unity 6000.0.45f1
 - Active game object:
-  - Name: FrontHitBox
-  - Tag: Player
+  - Name: CinemachineCamera
+  - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
