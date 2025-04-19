@@ -8,11 +8,10 @@ public class ScoreCOunter : MonoBehaviour
 
     void Awake()
     {
-        // Singleton pattern — ensures only one exists
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: persists across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class HintFade : MonoBehaviour
 {
-    [SerializeField] private float timepast = 0.0f;
-    [SerializeField] private float despawntimer = 15.0f;
+    [SerializeField] private float despawnTimer = 15.0f;
+    private float timePassed = 0.0f;
+
+    void OnEnable()
+    {
+        timePassed = 0.0f;
+    }
+
     void Update()
     {
-        timepast = Time.time;
-        if(timepast >= despawntimer)
+        timePassed += Time.deltaTime;
+
+        if (timePassed >= despawnTimer)
         {
             gameObject.SetActive(false);
         }
     }
 }
+
